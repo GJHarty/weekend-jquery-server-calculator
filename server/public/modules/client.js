@@ -1,17 +1,50 @@
 // setup document start
 $(document).ready(onReady);
 
+//setup button determiner
+$(document).ready(findOperator);
+//create global variable to store operator
+let operator = '';
+
 //setup event handler
 function onReady(){
     // add event handler for equals submit
-    $('#equalsBtn').on('click', submitCalc);
+    $('#equalsBtn').on('click', postCalculation);
 
-    // run get function
+    // run get function on load
+    getCalculations();
+};
+
+// handler for determining which operator button was clicked. 
+function findOperator(){
+    $('.calcBtn').on('click', (clickedBtn) => {
+        console.log('clickedBtn', clickedBtn.target.innerHTML);
+        // set global variable = to clickedBtn
+        operator = clickedBtn.target.innerHTML;
+        console.log(operator);
+        return operator;
+    });
 };
 
 // add function to grab user input and operator and post to server
-function submitCalc(){
+function postCalculation(){
     console.log('SubmitCalc');
+    // create data object using user inputs and operator variable
+    let newCalculation = {
+        num1: Number($('#numberOne').val()),
+        num2: Number($('#numberTwo').val()),
+        operator: operator,
+    };
+    console.log('newCalculation is', newCalculation);
+
+
+    // call ajax
+    // $.ajax({
+    //     // delcare endpoint
+    //     method: 'POST',
+    //     url: '/inputs',
+        
+    // });
 };
 
 // add function to get the calcArray and display on server
@@ -29,7 +62,7 @@ function getCalculations(){
 
         //empty ul
         calculationsList.empty();
-        // render calculations on DOM
+        // render calculations array on DOM
         for (let calc of response){
             $('#calcHistory').append(`
                 <li>
