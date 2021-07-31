@@ -11,21 +11,23 @@ let numberOne = 0;
 let numberTwo = 0;
 let operator = '';
 
-// create livedisplay string
-let liveDisplayString = $('#liveDisplay').val();
-
 //setup event handler
 function onReady(){
     // add event handler for equals submit
-    $('#equalsBtn').on('click', postCalculation);
-    $('#equalsBtn').on('click', splitLiveDisplay);
-
+    $('#equalsBtn').on('click', equalsClick);
+    
     // add handler for clear button
     $('#clearBtn').on('click', clearInputs);
 
     // run get function on load
     getCalculations();
 };
+
+// condense event handler for equals button click
+function equalsClick(){
+    splitLiveDisplay();
+    postCalculation();
+}
 
 // clear button
 function clearInputs(){
@@ -48,10 +50,18 @@ function findOperator(){
 
 // handler for splitting the liveDisplay string
 function splitLiveDisplay(){
+    // create livedisplay string
+    let liveDisplayString = $('#liveDisplay').val();
+    
+    // split numbers by operator
     let numbers = liveDisplayString.split(/[*]|[+]|[\/]|[\*]/);
+
+    // single out operator
     let operators = liveDisplayString.split(/[^*x]/).filter(e => e);
     console.log(numbers);
     console.log(operators);
+
+    // assign numbers and operator
     numberOne = numbers[0];
     numberTwo = numbers[1];
     operator = operators[0];
@@ -134,8 +144,8 @@ function postCalculation(){
 
     // create data object using user inputs and operator variable
     let newCalculation = {
-        num1: $('#numberOne').val(),
-        num2: $('#numberTwo').val(),
+        num1: numberOne,
+        num2: numberTwo,
         operator: operator,
     };
     console.log('newCalculation is', newCalculation);
@@ -152,9 +162,15 @@ function postCalculation(){
         getSolution();
         getCalculations();
 
-        // clear input fields and reset operator
-        $('#numberOne').val('');
-        $('#numberTwo').val('');
+        // // clear input fields and reset operator
+        // $('#numberOne').val('');
+        // $('#numberTwo').val('');
+        //operator = '';
+
+        // clear out livedisplay and reset globals
+        $('#liveDisplay').val('');
+        numberOne = 0;
+        numberTwo = 0;
         operator = '';
     }).catch((error) => {
             console.log('POST /inputs failed', error);
