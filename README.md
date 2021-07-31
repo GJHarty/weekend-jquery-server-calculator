@@ -10,20 +10,20 @@ Creating a server app that functions as a calculator and stores all calculator u
 
 [] Setup
     [] index.html
-    [] source in jquery / script.js
-    [] install express and body-parser
-    [] link style sheet
+        [x] source in jquery / script.js
+        [X] link style sheet
+    [x] install express and body-parser
     [] server setup
         [] require express
         [] require body-parser
         [] setup listen
 
-[] html layout
-    [] headers and ul for storing calculations
-    [] input fields for each number
-    [] 4 operator buttons
-    [] = button
-    [] clear button
+[x] html layout
+    [x] headers and ul for storing calculations
+    [x] input fields for each number
+    [x] 4 operator buttons
+    [x] = button
+    [x] clear button
 
 [] server code
     [] setup a get
