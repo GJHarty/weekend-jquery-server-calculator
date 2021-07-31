@@ -72,10 +72,10 @@ function getCalculations(){
         calculationsList.empty();
 
         // render calculations array on DOM
-        for (let calc of response){
+        for (let calc of response){ // response = calcArray, calc = object
             $('#calcHistory').append(`
                 <li>
-                    ${calc.calc}
+                    ${calc.num1} ${calc.operator} ${calc.num2} = ${calc.solution}
                 </li>
             `);
         };

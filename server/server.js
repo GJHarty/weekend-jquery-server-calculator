@@ -39,10 +39,22 @@ function calcSolution(array){
     };
 };
 
+//using the calcSolution, add a key/value pair to the object
+function addKeyValuePair(array){
+    let firstObject = array[0];
+    firstObject.solution = calcSolution(array);
+}
+
 // setup get request for appending calculation history
 app.get('/calcHistory', (req, res) => {
     console.log('Ready to send back calculations');
     console.log('Route is:', req.route.path);
+
+    // determine if calcArray has a value, and if so assign a new keyvalue with our current solution
+    if (calcArray.length > 0){
+        addKeyValuePair(calcArray);
+    };
+    console.log(calcArray[0]);
     res.send(calcArray);
 });
 
