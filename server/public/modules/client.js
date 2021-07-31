@@ -46,12 +46,17 @@ function postCalculation(){
         data: newCalculation
     }).then((response) => {
         console.log('POST /calcHistory', response);
-        //refresh data on server
+        // refresh data on server
         getSolution();
         getCalculations();
+
+        // clear input fields and reset operator
+        $('#numberOne').val('');
+        $('#numberTwo').val('');
+        operator = '';
     }).catch((error) => {
             console.log('POST /inputs failed', error);
-            //alert('There was an error processing the inputs. Please try again');
+            alert('There was an error processing the inputs or the operator. Please try again');
     });
 };
 
