@@ -1,14 +1,11 @@
 // setup document start
 $(document).ready(onReady);
 
-//setup button determiner
-// $(document).ready(findOperator);
-
 $(document).ready(liveDisplayHandler);
 
 //create global variable to store numbers and operator
-let numberOne = 0;
-let numberTwo = 0;
+let numberOne;
+let numberTwo;
 let operator = '';
 
 //setup event handler
@@ -27,14 +24,12 @@ function onReady(){
 function equalsClick(){
     splitLiveDisplay();
     postCalculation();
+    console.log('equalsClick load succesful');
 }
 
 // clear button
 function clearInputs(){
-    // console.log('Clearing inputs');
-    // $('#numberOne').val('');
-    // $('#numberTwo').val('');
-    // operator = '';
+    console.log('Clearing inputs');
     $('#liveDisplay').val('');
 };
 
@@ -152,11 +147,6 @@ function postCalculation(){
         // refresh data on server
         getSolution();
         getCalculations();
-
-        // // clear input fields and reset operator
-        // $('#numberOne').val('');
-        // $('#numberTwo').val('');
-        //operator = '';
 
         // clear out livedisplay and reset globals
         $('#liveDisplay').val('');
