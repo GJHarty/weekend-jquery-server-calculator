@@ -28,7 +28,8 @@ function findOperator(){
 
 // add function to grab user input and operator and post to server
 function postCalculation(){
-    console.log('SubmitCalc');
+    console.log('postCalc');
+
     // create data object using user inputs and operator variable
     let newCalculation = {
         num1: Number($('#numberOne').val()),
@@ -37,14 +38,20 @@ function postCalculation(){
     };
     console.log('newCalculation is', newCalculation);
 
-
     // call ajax
-    // $.ajax({
-    //     // delcare endpoint
-    //     method: 'POST',
-    //     url: '/inputs',
-        
-    // });
+    $.ajax({
+        // delcare endpoint
+        method: 'POST',
+        url: '/inputs',
+        data: newCalculation
+    }).then((response) => {
+        console.log('POST /inputs', response);
+        //refresh data on server
+        getCalculations();
+    }).catch((error) => {
+        console.log('POST /inputs failed', error);
+        alert('There was an error processing the inputs. Please try again')
+    });
 };
 
 // add function to get the calcArray and display on server
