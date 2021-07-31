@@ -32,8 +32,8 @@ function postCalculation(){
 
     // create data object using user inputs and operator variable
     let newCalculation = {
-        num1: Number($('#numberOne').val()),
-        num2: Number($('#numberTwo').val()),
+        num1: $('#numberOne').val(),
+        num2: $('#numberTwo').val(),
         operator: operator,
     };
     console.log('newCalculation is', newCalculation);

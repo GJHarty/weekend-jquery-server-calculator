@@ -20,23 +20,21 @@ let currentSolution = {
     currentSolutionVal: 0
 };
 
-
-
 // calculate out the current solution
 function calcSolution(array){
     let firstObject = array[0];
     switch (true) {
         case firstObject.operator === '+':
-            return firstObject.num1 + firstObject.num2;
+            return Number(firstObject.num1) + Number(firstObject.num2);
             break;
         case firstObject.operator === '-':
-            return firstObject.num1 - firstObject.num2;
+            return Number(firstObject.num1) - Number(firstObject.num2);
             break;
         case firstObject.operator === '*':
-            return firstObject.num1 * firstObject.num2;
+            return Number(firstObject.num1) * Number(firstObject.num2);
             break;
         case firstObject.operator === '/':
-            return firstObject.num1 / firstObject.num2;
+            return Number(firstObject.num1) / Number(firstObject.num2);
             break;
     };
 };
@@ -51,6 +49,9 @@ app.get('/calcHistory', (req, res) => {
 //setup get request for displaying currentSolution
 app.get('/solution', (req, res) => {
     console.log('Ready to send back solution');
+    
+    // assign current solution
+    currentSolution.currentSolutionVal = calcSolution(calcArray);
     res.send(currentSolution);
 });
 
