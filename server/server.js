@@ -20,7 +20,7 @@ let currentSolution = {
     currentSolutionVal: 0
 };
 
-// calculate out the current solution
+// calculate out the real current solution
 function calcSolution(array){
     let firstObject = array[0];
     switch (true) {
@@ -63,7 +63,7 @@ app.get('/solution', (req, res) => {
     console.log('Ready to send back solution');
     
     // assign current solution
-    currentSolution.currentSolutionVal = calcSolution(calcArray);
+    currentSolution.currentSolutionVal = calcSolution(calcArray).toFixed(2);
     res.send(currentSolution);
 });
 

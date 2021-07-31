@@ -1,5 +1,8 @@
 * {
     font-size: 20px;
+    font-family: futura;
+    background-color: black;
+    color: green;
 }
 
 button {
@@ -14,20 +17,24 @@ div {
 #stretchCalculator {
     padding: 10px;
     table-layout: fixed;
+    background-image: url(https://lh3.googleusercontent.com/FC_0vzxJCsStNZvQvR2QGOD_79g-7avaCLwj-D_xHWqVKXzl1ayshvm2PFfOIyvYhCi1TQ=s128);
 }
 
 #stretchCalculator, #formattedCalculator {
     text-align: center;
     margin: auto;
-    border-collapse: collapse;
 }
 
 #tableBody {
-    border: 3px solid black;
-    padding: 20px
+    border: 8px solid black;
+    padding: 20px;
 }
 
 #liveDisplay {
     width: 150px;
     height: 40px;
+}
+
+h1 {
+    text-align: center;
 }

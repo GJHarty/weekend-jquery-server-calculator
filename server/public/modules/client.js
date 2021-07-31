@@ -38,16 +38,6 @@ function clearInputs(){
     $('#liveDisplay').val('');
 };
 
-// // handler for determining which operator button was clicked. 
-// function findOperator(){
-//     $('.calcBtn').on('click', (clickedBtn) => {
-//         console.log('clickedBtn', clickedBtn.target.innerHTML);
-//         // set global variable = to clickedBtn
-//         operator = clickedBtn.target.innerHTML;
-//         return operator;
-//     });
-// };
-
 // handler for splitting the liveDisplay string
 function splitLiveDisplay(){
     // create livedisplay string
@@ -199,7 +189,7 @@ function getCalculations(){
         for (let calc of response){ // response = calcArray, calc = object
             $('#calcHistory').append(`
                 <li>
-                    ${calc.num1} ${calc.operator} ${calc.num2} = ${calc.solution}
+                    ${calc.num1} ${calc.operator} ${calc.num2} = ${(calc.solution).toFixed(2)}
                 </li>
             `);
         };
