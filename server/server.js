@@ -10,15 +10,22 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // global variables
 const port = 5000;
-let solution = {
-    solution: 0
+let currentSolution = {
+    currentSolution: 0
 };
+// store previous calculations
+// adding in placehodler test
+let calcArray = [
+    {
+        calc: 'placeholder'
+    }
+];
 
 // setup get request
-app.get('/calculator', (req, res) => {
+app.get('/calcHistory', (req, res) => {
     console.log('Ready to send back calculations');
     console.log('Route is:', req.route.path);
-    res.send(solution);
+    res.send(calcArray);
 });
 
 //setup post request
