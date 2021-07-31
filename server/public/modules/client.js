@@ -32,8 +32,8 @@ function postCalculation(){
 
     // create data object using user inputs and operator variable
     let newCalculation = {
-        num1: Number($('#numberOne').val()),
-        num2: Number($('#numberTwo').val()),
+        num1: $('#numberOne').val(),
+        num2: $('#numberTwo').val(),
         operator: operator,
     };
     console.log('newCalculation is', newCalculation);
@@ -42,15 +42,15 @@ function postCalculation(){
     $.ajax({
         // delcare endpoint
         method: 'POST',
-        url: '/inputs',
+        url: '/calcHistory',
         data: newCalculation
     }).then((response) => {
-        console.log('POST /inputs', response);
+        console.log('POST /calcHistory', response);
         //refresh data on server
         getCalculations();
     }).catch((error) => {
-        console.log('POST /inputs failed', error);
-        alert('There was an error processing the inputs. Please try again')
+            console.log('POST /inputs failed', error);
+            //alert('There was an error processing the inputs. Please try again');
     });
 };
 
@@ -69,6 +69,7 @@ function getCalculations(){
 
         //empty ul
         calculationsList.empty();
+
         // render calculations array on DOM
         for (let calc of response){
             $('#calcHistory').append(`

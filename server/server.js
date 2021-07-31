@@ -29,8 +29,27 @@ app.get('/calcHistory', (req, res) => {
 });
 
 //setup post request
-app.post('/inputs', (req, res) => {
+app.post('/calcHistory', (req, res) => {
     console.log('Ready to post user input');
+    
+    // log data from client
+    console.log('req.body', req.body);
+
+    let newCalculation = req.body;
+
+    // validate user inputs
+    if (!newCalculation.num1 || !newCalculation.num2 || newCalculation.operator === ''){
+        // user has missed an input, indicate client error
+        res.status(400).send({
+            message: 'Missing required field or operator. Please try again.'
+        });
+        // end function
+        return;
+    };
+
+    // push to calculations array NEED TO FORMAT
+    calcArray.push(newCalculation);
+
     res.sendStatus(200);
 });
 
