@@ -3,6 +3,7 @@ $(document).ready(onReady);
 
 //setup button determiner
 $(document).ready(findOperator);
+
 //create global variable to store operator
 let operator = '';
 
@@ -21,7 +22,6 @@ function findOperator(){
         console.log('clickedBtn', clickedBtn.target.innerHTML);
         // set global variable = to clickedBtn
         operator = clickedBtn.target.innerHTML;
-        console.log(operator);
         return operator;
     });
 };
@@ -32,8 +32,8 @@ function postCalculation(){
 
     // create data object using user inputs and operator variable
     let newCalculation = {
-        num1: $('#numberOne').val(),
-        num2: $('#numberTwo').val(),
+        num1: Number($('#numberOne').val()),
+        num2: Number($('#numberTwo').val()),
         operator: operator,
     };
     console.log('newCalculation is', newCalculation);
@@ -47,6 +47,7 @@ function postCalculation(){
     }).then((response) => {
         console.log('POST /calcHistory', response);
         //refresh data on server
+        getSolution();
         getCalculations();
     }).catch((error) => {
             console.log('POST /inputs failed', error);
@@ -78,5 +79,19 @@ function getCalculations(){
                 </li>
             `);
         };
+    });
+};
+
+//add get function for currentSolution
+function getSolution(){
+    console.log('ready to get solution from server');
+    $.ajax({
+        method: 'GET',
+        url: '/solution'
+    }).then((response) => { // response = currentSolution object
+        console.log('GET /solution', response); 
+        
+        // assign solution value
+        $('#currentSolution').html(`${response.currentSolutionVal}`);
     });
 };

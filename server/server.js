@@ -10,22 +10,48 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // global variables
 const port = 5000;
-let currentSolution = {
-    currentSolution: 0
-};
-// store previous calculations
+// store calculations
 // adding in placehodler test
 let calcArray = [
-    {
-        calc: 'placeholder'
-    }
+    // this is where our posted newCalculations end up
 ];
+// store current solution
+let currentSolution = {
+    currentSolutionVal: 0
+};
 
-// setup get request
+
+
+// calculate out the current solution
+function calcSolution(array){
+    let firstObject = array[0];
+    switch (true) {
+        case firstObject.operator === '+':
+            return firstObject.num1 + firstObject.num2;
+            break;
+        case firstObject.operator === '-':
+            return firstObject.num1 - firstObject.num2;
+            break;
+        case firstObject.operator === '*':
+            return firstObject.num1 * firstObject.num2;
+            break;
+        case firstObject.operator === '/':
+            return firstObject.num1 / firstObject.num2;
+            break;
+    };
+};
+
+// setup get request for appending calculation history
 app.get('/calcHistory', (req, res) => {
     console.log('Ready to send back calculations');
     console.log('Route is:', req.route.path);
     res.send(calcArray);
+});
+
+//setup get request for displaying currentSolution
+app.get('/solution', (req, res) => {
+    console.log('Ready to send back solution');
+    res.send(currentSolution);
 });
 
 //setup post request
@@ -48,7 +74,7 @@ app.post('/calcHistory', (req, res) => {
     };
 
     // push to calculations array NEED TO FORMAT
-    calcArray.push(newCalculation);
+    calcArray.unshift(newCalculation);
 
     res.sendStatus(200);
 });
