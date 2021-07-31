@@ -4,13 +4,21 @@ $(document).ready(onReady);
 //setup button determiner
 $(document).ready(findOperator);
 
-//create global variable to store operator
+$(document).ready(liveDisplayHandler);
+
+//create global variable to store numbers and operator
+let numberOne = 0;
+let numberTwo = 0;
 let operator = '';
+
+// create livedisplay string
+let liveDisplayString = $('#liveDisplay').val();
 
 //setup event handler
 function onReady(){
     // add event handler for equals submit
     $('#equalsBtn').on('click', postCalculation);
+    $('#equalsBtn').on('click', splitLiveDisplay);
 
     // add handler for clear button
     $('#clearBtn').on('click', clearInputs);
@@ -21,10 +29,11 @@ function onReady(){
 
 // clear button
 function clearInputs(){
-    console.log('Clearing inputs');
-    $('#numberOne').val('');
-    $('#numberTwo').val('');
-    operator = '';
+    // console.log('Clearing inputs');
+    // $('#numberOne').val('');
+    // $('#numberTwo').val('');
+    // operator = '';
+    $('#liveDisplay').val('');
 };
 
 // handler for determining which operator button was clicked. 
@@ -34,6 +43,88 @@ function findOperator(){
         // set global variable = to clickedBtn
         operator = clickedBtn.target.innerHTML;
         return operator;
+    });
+};
+
+// handler for splitting the liveDisplay string
+function splitLiveDisplay(){
+    let numbers = liveDisplayString.split(/[*]|[+]|[\/]|[\*]/);
+    let operators = liveDisplayString.split(/[^*x]/).filter(e => e);
+    console.log(numbers);
+    console.log(operators);
+    numberOne = numbers[0];
+    numberTwo = numbers[1];
+    operator = operators[0];
+};
+
+function liveDisplayHandler(){
+    $('.calcBtn').on('click', (clickedBtn) => {
+        console.log('clickedBtn', clickedBtn.target.innerHTML);
+
+        let liveDisplay = $('#liveDisplay').val();
+        // determine which id was clicked and append to liveDisplay
+        switch (true) {
+            case clickedBtn.target.innerHTML === '1':
+                liveDisplay += '1';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '2':
+                liveDisplay += '2';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '3':
+                liveDisplay += '3';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '4':
+                liveDisplay += '4';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '5':
+                liveDisplay += '5';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '6':
+                liveDisplay += '6';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '7':
+                liveDisplay += '7';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '8':
+                liveDisplay += '8';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '9':
+                liveDisplay += '9';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '0':
+                liveDisplay += '0';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '+':
+                liveDisplay += '+';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '-':
+                liveDisplay += '-';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '*':
+                liveDisplay += '*';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '/':
+                liveDisplay += '/';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '.':
+                liveDisplay += '.';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+        }
     });
 };
 

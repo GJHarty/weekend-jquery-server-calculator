@@ -37,9 +37,12 @@ Creating a server app that functions as a calculator and stores all calculator u
 
 ## Stretch
 
-[] add buttons for integers 0-9
-[] add decimal button
-[] add live display of buttons pressed
+[x] add buttons for integers 0-9
+[x] add decimal button
+[x] add live display of buttons pressed
+
+[] livedisplay functionality
+    [] button presses must cocatenate when pressed
 
 
 

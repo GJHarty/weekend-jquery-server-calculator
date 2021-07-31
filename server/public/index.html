@@ -11,7 +11,7 @@
 </head>
 <body>
     <h1>Weekend Server Calculator</h1>
-    <div id="calculatorDiv">
+    <!-- <div id="calculatorDiv">
         <input id="numberOne" type="number" placeholder="Number One">
         <button class="calcBtn" id="plusBtn">+</button>
         <button class="calcBtn" id="minusBtn">-</button>
@@ -20,6 +20,51 @@
         <input id="numberTwo" type="number" placeholder="Number Two">
         <button id="equalsBtn">=</button>
         <button id="clearBtn">C</button>
+    </div> -->
+
+    <div id="stretchCalculator">
+        <table id="formattedCalculator">
+            <tbody id="tableBody">
+                <tr>
+                    <td>
+                        <input id="liveDisplay" type="text">
+                        <button class="calcBtn" id="clearBtn">C</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="calcBtn" id="7Btn">7</button>
+                        <button class="calcBtn" id="8Btn">8</button>
+                        <button class="calcBtn" id="9Btn">9</button>
+                        <button class="calcBtn" id="plusBtn">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="calcBtn" id="4Btn">4</button>
+                        <button class="calcBtn" id="5Btn">5</button>
+                        <button class="calcBtn" id="6Btn">6</button>
+                        <button class="calcBtn" id="minusBtn">-</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="calcBtn" id="1Btn">1</button>
+                        <button class="calcBtn" id="2Btn">2</button>
+                        <button class="calcBtn" id="3Btn">3</button>
+                        <button class="calcBtn" id="multiplyBtn">*</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="calcBtn" id="0Btn">0</button>
+                        <button class="calcBtn" id="decimalBtn">.</button>
+                        <button class="calcBtn" id="equalsBtn">=</button>
+                        <button class="calcBtn" id="divideBtn">/</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <h2>Current Solution:</h2>
     <span id="currentSolution"></span>
