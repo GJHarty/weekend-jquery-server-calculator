@@ -2,7 +2,7 @@
 $(document).ready(onReady);
 
 //setup button determiner
-$(document).ready(findOperator);
+// $(document).ready(findOperator);
 
 $(document).ready(liveDisplayHandler);
 
@@ -38,15 +38,15 @@ function clearInputs(){
     $('#liveDisplay').val('');
 };
 
-// handler for determining which operator button was clicked. 
-function findOperator(){
-    $('.calcBtn').on('click', (clickedBtn) => {
-        console.log('clickedBtn', clickedBtn.target.innerHTML);
-        // set global variable = to clickedBtn
-        operator = clickedBtn.target.innerHTML;
-        return operator;
-    });
-};
+// // handler for determining which operator button was clicked. 
+// function findOperator(){
+//     $('.calcBtn').on('click', (clickedBtn) => {
+//         console.log('clickedBtn', clickedBtn.target.innerHTML);
+//         // set global variable = to clickedBtn
+//         operator = clickedBtn.target.innerHTML;
+//         return operator;
+//     });
+// };
 
 // handler for splitting the liveDisplay string
 function splitLiveDisplay(){
@@ -54,10 +54,11 @@ function splitLiveDisplay(){
     let liveDisplayString = $('#liveDisplay').val();
     
     // split numbers by operator
-    let numbers = liveDisplayString.split(/[*]|[+]|[\/]|[\*]/);
+    let numbers = liveDisplayString.split(/[*]|[+]|[\/]|[\-]/);
 
     // single out operator
-    let operators = liveDisplayString.split(/[^*x]/).filter(e => e);
+    let operators = liveDisplayString.split(/[^-|+|\/|\*]/).filter(e => e);
+
     console.log(numbers);
     console.log(operators);
 
