@@ -12,8 +12,19 @@ function onReady(){
     // add event handler for equals submit
     $('#equalsBtn').on('click', postCalculation);
 
+    // add handler for clear button
+    $('#clearBtn').on('click', clearInputs);
+
     // run get function on load
     getCalculations();
+};
+
+// clear button
+function clearInputs(){
+    console.log('Clearing inputs');
+    $('#numberOne').val('');
+    $('#numberTwo').val('');
+    operator = '';
 };
 
 // handler for determining which operator button was clicked. 
