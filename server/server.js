@@ -50,7 +50,7 @@ app.get('/calcHistory', (req, res) => {
     console.log('Ready to send back calculations');
     console.log('Route is:', req.route.path);
 
-    // determine if calcArray has a value, and if so assign a new keyvalue with our current solution
+    // determine if calcArray has an object, and if so assign a new keyvalue with our current solution
     if (calcArray.length > 0){
         addKeyValuePair(calcArray);
     };
