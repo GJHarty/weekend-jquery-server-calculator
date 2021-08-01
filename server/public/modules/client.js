@@ -39,10 +39,10 @@ function splitLiveDisplay(){
     let liveDisplayString = $('#liveDisplay').val();
     
     // split numbers by operator
-    let numbers = liveDisplayString.split(/[*]|[+]|[\/]|[\-]/);
+    let numbers = liveDisplayString.split(/[*]|[+]|[\/]|[\-]|[\^]/);
 
     // single out operator
-    let operators = liveDisplayString.split(/[^-|+|\/|\*]/).filter(e => e);
+    let operators = liveDisplayString.split(/[^-|+|\/|\*|\^]/).filter(e => e);
 
     console.log(numbers);
     console.log(operators);
@@ -118,6 +118,10 @@ function liveDisplayHandler(){
                 break;
             case clickedBtn.target.innerHTML === '.':
                 liveDisplay += '.';
+                $('#liveDisplay').val(liveDisplay);
+                break;
+            case clickedBtn.target.innerHTML === '^':
+                liveDisplay += '^';
                 $('#liveDisplay').val(liveDisplay);
                 break;
         }

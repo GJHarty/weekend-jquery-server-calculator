@@ -36,6 +36,9 @@ function calcSolution(array){
         case firstObject.operator === '/':
             return Number(firstObject.num1) / Number(firstObject.num2);
             break;
+        case firstObject.operator === '^':
+            return Number(firstObject.num1) ** Number(firstObject.num2);
+            break;
     };
 };
 
