@@ -1,13 +1,18 @@
-# Project Name
+# JQuery Server Calculator
 
-jquery and node Server Calculator Project
+This is a basic calculator built with JQuery using a Node.js server.
 
-## Description
+## Installation
 
-Creating a server app that functions as a calculator and stores all calculator uses on the DOM.
+Simply clone the respository and install the node modules. You can start the application using npm start
+```
+npm install
+npm start
+```
 
-## Images
+## Usage
 
+This should be pretty straight forward. Clicking any of the buttons on the calculator should display the numbers and symbols in the display bar at the top. Pressing the 'C' button will clear the current inputs. This calculator can only handle a single operation and adding multiple will break the functionality. Previous calculations will be displayed in reverse chronological order at the bottom of the page.
 
-
-
+[Imgur](https://i.imgur.com/84d3WAN.png)
+<a href="https://imgur.com/84d3WAN"><img src="https://i.imgur.com/84d3WAN.png" title="source: imgur.com" /></a>
